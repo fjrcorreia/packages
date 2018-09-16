@@ -97,13 +97,12 @@ getent passwd %{_user} >/dev/null && userdel %{_user}
 rm -rf %{buildroot}
 
 %files
-%defattr(644,%{_user},%{_group},755)
+%defattr(-,%{_user},%{_group},-)
 %{home_dir}
 %{work_dir}
 %dir /var/log/%{name}
 
 %attr(644, root, root)  %{_unitdir}/%{name}.service
-
 %config(noreplace) %attr(640, root, %{_group}) %{_sysconfdir}/sysconfig/%{name}
 
 %changelog
